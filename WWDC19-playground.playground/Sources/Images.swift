@@ -1,4 +1,12 @@
-import UIKit
+//
+//  Images.swift
+//  WWDC19
+//
+//  Created by Vinícius Bonemer on 16/03/19.
+//  Copyright © 2019 Vinícius Bonemer. All rights reserved.
+//
+
+import class UIKit.UIImage
 
 public
 enum Images {

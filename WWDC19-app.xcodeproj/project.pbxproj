@@ -16,6 +16,8 @@
 		FBEA7676223D247C005F8BE7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7675223D247C005F8BE7 /* Images.swift */; };
 		FBEA7678223D2602005F8BE7 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */; };
 		FBEA767A223D2669005F8BE7 /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7679223D2669005F8BE7 /* Stepper.swift */; };
+		FBEA767C223D2709005F8BE7 /* FlightInformationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA767B223D2709005F8BE7 /* FlightInformationCell.swift */; };
+		FBEA767E223D2742005F8BE7 /* Glyph.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA767D223D2742005F8BE7 /* Glyph.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		FBEA7675223D247C005F8BE7 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = "WWDC19-playground.playground/Sources/Images.swift"; sourceTree = SOURCE_ROOT; };
 		FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSLayoutConstraint.swift; path = "WWDC19-playground.playground/Sources/NSLayoutConstraint.swift"; sourceTree = SOURCE_ROOT; };
 		FBEA7679223D2669005F8BE7 /* Stepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stepper.swift; path = "WWDC19-playground.playground/Sources/Stepper.swift"; sourceTree = SOURCE_ROOT; };
+		FBEA767B223D2709005F8BE7 /* FlightInformationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlightInformationCell.swift; path = "WWDC19-playground.playground/Sources/FlightInformationCell.swift"; sourceTree = SOURCE_ROOT; };
+		FBEA767D223D2742005F8BE7 /* Glyph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Glyph.swift; path = "WWDC19-playground.playground/Sources/Glyph.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +68,7 @@
 		FB0F755F223D1D410053350C /* WWDC19-app */ = {
 			isa = PBXGroup;
 			children = (
-				FB0F7573223D201F0053350C /* PalygroundSources */,
+				FB0F7573223D201F0053350C /* PlaygroundSources */,
 				FB0F7560223D1D410053350C /* AppDelegate.swift */,
 				FB0F7562223D1D410053350C /* ViewController.swift */,
 				FB0F7564223D1D410053350C /* Main.storyboard */,
@@ -75,15 +79,17 @@
 			path = "WWDC19-app";
 			sourceTree = "<group>";
 		};
-		FB0F7573223D201F0053350C /* PalygroundSources */ = {
+		FB0F7573223D201F0053350C /* PlaygroundSources */ = {
 			isa = PBXGroup;
 			children = (
+				FBEA767D223D2742005F8BE7 /* Glyph.swift */,
+				FBEA767B223D2709005F8BE7 /* FlightInformationCell.swift */,
 				FBEA7679223D2669005F8BE7 /* Stepper.swift */,
 				FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */,
 				FBEA7675223D247C005F8BE7 /* Images.swift */,
 				FB662879223D20F0009ABF30 /* Colors.swift */,
 			);
-			path = PalygroundSources;
+			path = PlaygroundSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -159,10 +165,12 @@
 			files = (
 				FB0F7563223D1D410053350C /* ViewController.swift in Sources */,
 				FBEA767A223D2669005F8BE7 /* Stepper.swift in Sources */,
+				FBEA767E223D2742005F8BE7 /* Glyph.swift in Sources */,
 				FBEA7676223D247C005F8BE7 /* Images.swift in Sources */,
 				FB66287A223D20F0009ABF30 /* Colors.swift in Sources */,
 				FB0F7561223D1D410053350C /* AppDelegate.swift in Sources */,
 				FBEA7678223D2602005F8BE7 /* NSLayoutConstraint.swift in Sources */,
+				FBEA767C223D2709005F8BE7 /* FlightInformationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

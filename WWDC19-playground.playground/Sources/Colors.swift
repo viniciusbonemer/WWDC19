@@ -6,7 +6,7 @@
 //  Copyright © 2019 Vinícius Bonemer. All rights reserved.
 //
 
-import UIKit
+import class UIKit.UIColor
 
 public
 enum Colors {

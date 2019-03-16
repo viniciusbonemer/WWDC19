@@ -14,6 +14,7 @@
 		FB0F756B223D1D430053350C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0F7569223D1D430053350C /* LaunchScreen.storyboard */; };
 		FB66287A223D20F0009ABF30 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB662879223D20F0009ABF30 /* Colors.swift */; };
 		FBEA7676223D247C005F8BE7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7675223D247C005F8BE7 /* Images.swift */; };
+		FBEA7678223D2602005F8BE7 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		FB0F7572223D1DB70053350C /* WWDC19-playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "WWDC19-playground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		FB662879223D20F0009ABF30 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = "WWDC19-playground.playground/Sources/Colors.swift"; sourceTree = SOURCE_ROOT; };
 		FBEA7675223D247C005F8BE7 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = "WWDC19-playground.playground/Sources/Images.swift"; sourceTree = SOURCE_ROOT; };
+		FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSLayoutConstraint.swift; path = "WWDC19-playground.playground/Sources/NSLayoutConstraint.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 		FB0F7573223D201F0053350C /* PalygroundSources */ = {
 			isa = PBXGroup;
 			children = (
+				FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */,
 				FBEA7675223D247C005F8BE7 /* Images.swift */,
 				FB662879223D20F0009ABF30 /* Colors.swift */,
 			);
@@ -155,6 +158,7 @@
 				FBEA7676223D247C005F8BE7 /* Images.swift in Sources */,
 				FB66287A223D20F0009ABF30 /* Colors.swift in Sources */,
 				FB0F7561223D1D410053350C /* AppDelegate.swift in Sources */,
+				FBEA7678223D2602005F8BE7 /* NSLayoutConstraint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

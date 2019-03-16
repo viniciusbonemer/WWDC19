@@ -12,6 +12,7 @@
 		FB0F7566223D1D410053350C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0F7564223D1D410053350C /* Main.storyboard */; };
 		FB0F7568223D1D430053350C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0F7567223D1D430053350C /* Assets.xcassets */; };
 		FB0F756B223D1D430053350C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0F7569223D1D430053350C /* LaunchScreen.storyboard */; };
+		FB66287A223D20F0009ABF30 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB662879223D20F0009ABF30 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		FB0F756A223D1D430053350C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB0F756C223D1D430053350C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB0F7572223D1DB70053350C /* WWDC19-playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "WWDC19-playground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FB662879223D20F0009ABF30 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = "WWDC19-playground.playground/Sources/Colors.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		FB0F755F223D1D410053350C /* WWDC19-app */ = {
 			isa = PBXGroup;
 			children = (
+				FB0F7573223D201F0053350C /* PalygroundSources */,
 				FB0F7560223D1D410053350C /* AppDelegate.swift */,
 				FB0F7562223D1D410053350C /* ViewController.swift */,
 				FB0F7564223D1D410053350C /* Main.storyboard */,
@@ -64,6 +67,14 @@
 				FB0F756C223D1D430053350C /* Info.plist */,
 			);
 			path = "WWDC19-app";
+			sourceTree = "<group>";
+		};
+		FB0F7573223D201F0053350C /* PalygroundSources */ = {
+			isa = PBXGroup;
+			children = (
+				FB662879223D20F0009ABF30 /* Colors.swift */,
+			);
+			path = PalygroundSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB0F7563223D1D410053350C /* ViewController.swift in Sources */,
+				FB66287A223D20F0009ABF30 /* Colors.swift in Sources */,
 				FB0F7561223D1D410053350C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

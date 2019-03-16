@@ -22,6 +22,7 @@
 		FB0F7567223D1D430053350C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB0F756A223D1D430053350C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB0F756C223D1D430053350C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FB0F7572223D1DB70053350C /* WWDC19-playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "WWDC19-playground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +39,7 @@
 		FB0F7554223D1D410053350C = {
 			isa = PBXGroup;
 			children = (
+				FB0F7572223D1DB70053350C /* WWDC19-playground.playground */,
 				FB0F755F223D1D410053350C /* WWDC19-app */,
 				FB0F755E223D1D410053350C /* Products */,
 			);

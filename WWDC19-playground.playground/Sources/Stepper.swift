@@ -11,6 +11,8 @@ import UIKit
 public
 class Stepper: UIView {
     
+    // MARK: - Properties -
+    
     public lazy
     var topButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 12, height: 6))
@@ -57,6 +59,8 @@ class Stepper: UIView {
         return label
     }()
     
+    // MARK: - Initialization -
+    
     public
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 12, height: 53))
@@ -68,6 +72,8 @@ class Stepper: UIView {
     init?(coder aDecoder: NSCoder) {
         self.init()
     }
+    
+    // MARK: - Methods -
     
     @objc private
     func incrementCount() {
@@ -165,7 +171,5 @@ class Stepper: UIView {
             bottomButton.centerXAnchor.constraint(equalTo: centerXAnchor)
                 .identifiedBy("bottomButton.centerXAnchor = centerXAnchor")
             ])
-        
     }
-    
 }

@@ -9,25 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var info: FlightInformationCell!
+    var info2: FlightInformationCell!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
-        let info = FlightInformationCell()
         
-//        info.topGlyph.image = Images.calendarGlyph
+        info = FlightInformationCell()
+        
         info.bottomGlyph.image = Images.airplaneGlyph
         info.topLabel.text = "From"
         info.textField.text = "GIG"
+        info.textField.placeholder = "Airport"
+        info.textField.delegate = self
         info.bottomLabel.text = "12+ years"
         view.addSubview(info)
         
-        let info2 = FlightInformationCell()
+        info2 = FlightInformationCell()
         
         info2.topGlyph.image = Images.calendarGlyph
-//        info2.bottomGlyph.image = Images.airplaneGlyph
         info2.topLabel.text = "Departure"
         info2.textField.text = "2 JUN"
+        info2.textField.placeholder = "Date"
+        info2.textField.delegate = self
         info2.bottomLabel.text = "Sunday 2018"
         info2.stepper.isHidden = true
         info2.focus = .topLabel
@@ -45,3 +51,27 @@ class ViewController: UIViewController {
 
 }
 
+// MARK: - UITextFieldDelegate
+
+extension ViewController: UITextFieldDelegate {
+    
+    public
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField === self.info.textField {
+            guard
+                (textField.text?.count ?? 0 + string.count < 3)
+                    || string.count <= 0
+                else { return false }
+            self.info.textField.text = (textField.text as NSString?)?.replacingCharacters(in: range, with: string.uppercased())
+            return false
+        }
+        return true
+    }
+    
+    public
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}

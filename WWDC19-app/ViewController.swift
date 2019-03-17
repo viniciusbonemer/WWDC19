@@ -91,7 +91,7 @@ class ViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             card.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            card.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            card.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15)
             ])
         
         

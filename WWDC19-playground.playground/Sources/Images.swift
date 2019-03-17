@@ -36,4 +36,9 @@ enum Images {
         return UIImage(named: "CalendarGlyph")!
     }
     
+    public static
+    var map: UIImage {
+        return UIImage(named: "Map")!
+    }
+    
 }

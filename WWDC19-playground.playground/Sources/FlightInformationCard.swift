@@ -264,7 +264,7 @@ class FlightInformationCard: UIView {
         translatesAutoresizingMaskIntoConstraints = false
         
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.15
+        layer.shadowOpacity = 0.30
         layer.shadowOffset = CGSize(width: 0, height: 14)
         layer.shadowRadius = 18
         layer.masksToBounds = false
@@ -285,6 +285,7 @@ class FlightInformationCard: UIView {
         // Size Constraints
         NSLayoutConstraint.activate([
             widthAnchor.constraint(equalToConstant: 343),
+            heightAnchor.constraint(equalToConstant: 600)
             ])
         
         // Stackview's arranged subviews' constraints

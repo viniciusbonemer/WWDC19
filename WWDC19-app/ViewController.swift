@@ -95,7 +95,7 @@ class ViewController: UIViewController {
             ])
         
         
-        view.backgroundColor = Colors.lightGray
+        view.backgroundColor = Colors.white
         
     }
 }

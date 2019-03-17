@@ -259,9 +259,15 @@ class FlightInformationCard: UIView {
     private
     func setUp() {
         backgroundColor = Colors.white
-        clipsToBounds = true
+        clipsToBounds = false
         layer.cornerRadius = 12
         translatesAutoresizingMaskIntoConstraints = false
+        
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.15
+        layer.shadowOffset = CGSize(width: 0, height: 14)
+        layer.shadowRadius = 18
+        layer.masksToBounds = false
         
         setUpViewHierarchy()
         setUpConstraints()

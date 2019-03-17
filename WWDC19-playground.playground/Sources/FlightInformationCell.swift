@@ -14,6 +14,7 @@ class FlightInformationCell: UIView {
     // MARK: - Properties -
     
     // MARK: Views
+    
     public
     var topLabel: UILabel = {
         let label = UILabel()
@@ -40,7 +41,7 @@ class FlightInformationCell: UIView {
     var bottomLabel: UILabel = {
         let label = UILabel()
         
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 15)
         label.textColor = Colors.lightGray
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -84,6 +85,7 @@ class FlightInformationCell: UIView {
     private
     var constraintsWithoutBottomGlyph: [NSLayoutConstraint] = []
     
+    
     // MARK: - Initialization -
     
     public
@@ -97,6 +99,7 @@ class FlightInformationCell: UIView {
     init?(coder aDecoder: NSCoder) {
         self.init()
     }
+    
     
     // MARK: - Methods -
     
@@ -126,12 +129,23 @@ class FlightInformationCell: UIView {
     func setUpFonts(for focus: FlightInformationCell.Focus) {
         switch focus {
         case .topLabel:
-            topLabel.font = .systemFont(ofSize: 20, weight: .medium)
-            textField.font = .systemFont(ofSize: 28, weight: .semibold)
+            topLabel.font = .systemFont(ofSize: 17, weight: .medium)
+            textField.font = .systemFont(ofSize: 20, weight: .semibold)
         case .middleLabel:
-            topLabel.font = .systemFont(ofSize: 20, weight: .regular)
-            textField.font = .systemFont(ofSize: 28, weight: .bold)
+            topLabel.font = .systemFont(ofSize: 17, weight: .regular)
+            textField.font = .systemFont(ofSize: 20, weight: .bold)
         }
+    }
+    
+    public
+    func applyColors() {
+        textField.textColor = textField.isUserInteractionEnabled ? Colors.blue : Colors.black
+    }
+    
+    public override func layoutSubviews() {
+        applyColors()
+        
+        super.layoutSubviews()
     }
     
     public override
@@ -151,64 +165,34 @@ class FlightInformationCell: UIView {
     private
     func setUpConstraints() {
         
-        // Cell size constraints
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 170)
-                .identifiedBy("Cell-width"),
-            heightAnchor.constraint(equalToConstant: 116)
-                .identifiedBy("Cell-height")
-            ])
-        
-        // Top label size constraints
-        NSLayoutConstraint.activate([
-            topLabel.heightAnchor.constraint(equalToConstant: 29)
-                .identifiedBy("topLabel.heightAnchor")
-            ])
-        
-        // Middle label size constraints
-        NSLayoutConstraint.activate([
-            textField.heightAnchor.constraint(equalToConstant: 41)
-                .identifiedBy("textField.heightAnchor")
-            ])
-        
-        // Bottom label size constraints
-        NSLayoutConstraint.activate([
-            bottomLabel.heightAnchor.constraint(equalToConstant: 23)
-                .identifiedBy("bottomLabel.heightAnchor")
-            ])
-        
-        // Top glyph size constraints
-        NSLayoutConstraint.activate([
-            topGlyph.widthAnchor.constraint(equalToConstant: 26)
-                .identifiedBy("topGlyph.widthAnchor"),
-            topGlyph.heightAnchor.constraint(equalTo: topGlyph.widthAnchor)
-                .identifiedBy("topGlyph.heightAnchor = topGlyph.widthAnchor")
-            ])
-        
-        // Bottom glyph size constraints
-        NSLayoutConstraint.activate([
-            bottomGlyph.widthAnchor.constraint(equalToConstant: 20)
-                .identifiedBy("bottomGlyph.widthAnchor"),
-            bottomGlyph.heightAnchor.constraint(equalTo: bottomGlyph.widthAnchor)
-                .identifiedBy("bottomGlyph.heightAnchor = bottomGlyph.widthAnchor")
-            ])
-        
         // Stepper size constraints is set by default in the Stepper class
+        
+        topLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         
         // Top label position
         NSLayoutConstraint.activate([
-            topLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8)
+            topLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 8)
                 .identifiedBy("topLabel.topAnchor = topAnchor + 8"),
-            topLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
-                .identifiedBy("topLabel.leadingAnchor + leadingAnchor + 8"),
+            topLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor)
+                .identifiedBy("topLabel.leadingAnchor = textField.leadingAnchor"),
+            topLabel.heightAnchor.constraint(equalToConstant: 20)
+                .identifiedBy("topLabel.heightAnchor = 20"),
+            topLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -46)
+                .identifiedBy("topLabel.trailingAnchor = trailingAnchor - 46"),
             ])
         
-        // Middle label position
+        textField.setContentHuggingPriority(.defaultHigh, for: .horizontal)
+        
+        // Text field position
         NSLayoutConstraint.activate([
-            textField.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 5)
-                .identifiedBy("textField.topAnchor = topLabel.bottomAnchor + 5"),
-            textField.leadingAnchor.constraint(equalTo: topLabel.leadingAnchor)
-                .identifiedBy("textField.leadingAnchor = topLabel.leadingAnchor"),
+            textField.topAnchor.constraint(equalTo: topLabel.bottomAnchor, constant: 4)
+                .identifiedBy("textField.topAnchor = topLabel.bottomAnchor + 4"),
+            textField.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 2)
+                .identifiedBy("textField.centerYAnchor = centerYAnchor + 2"),
+            textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8)
+                .identifiedBy("textField.leadingAnchor = leadingAnchor + 8"),
+            textField.heightAnchor.constraint(equalToConstant: 30)
+                .identifiedBy("textField.heightAnchor = 30"),
             textField.trailingAnchor.constraint(equalTo: topLabel.trailingAnchor)
                 .identifiedBy("textField.trailingAnchor = topLabel.trailingAnchor")
             ])
@@ -216,7 +200,7 @@ class FlightInformationCell: UIView {
         // Bottom label position
         constraintsWithBottomGlyph = [
             bottomLabel.leadingAnchor.constraint(equalTo: bottomGlyph.trailingAnchor, constant: 4)
-                .identifiedBy("bottomLabel.leadingAnchor = bottomGlyph.trailingAnchor + 4")
+                .identifiedBy("bottomLabel.leadingAnchor = bottomGlyph.trailingAnchor + 4"),
         ]
         
         constraintsWithoutBottomGlyph = [
@@ -226,43 +210,54 @@ class FlightInformationCell: UIView {
         
         NSLayoutConstraint.activate(constraintsWithBottomGlyph)
         
+        bottomLabel.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        bottomLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
+        
         NSLayoutConstraint.activate([
             bottomLabel.topAnchor.constraint(equalTo: textField.bottomAnchor)
                 .identifiedBy("bottomLabel.topAnchor = textField.bottomAnchor"),
-            bottomLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -4)
-                .identifiedBy("bottomLabel.trailingAnchor <= trailingAnchor - 4"),
+            bottomLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4)
+                .identifiedBy("bottomLabel.trailingAnchor = trailingAnchor - 4"),
             bottomLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -8)
-                .identifiedBy("bottomLabel.bottomAnchor <= bottomAnchor - 8")
+                .identifiedBy("bottomLabel.bottomAnchor <= bottomAnchor - 8"),
+            bottomLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 100)
+                .identifiedBy("bottomLabel.widthAnchor >= 100")
             ])
         
-        // Top glyph position
+        // Top glyph size constraints
         NSLayoutConstraint.activate([
-            topGlyph.leadingAnchor.constraint(greaterThanOrEqualTo: topLabel.trailingAnchor, constant: 6)
-                .identifiedBy("topGlyph.leadingAnchor >= topLabel.trailingAnchor + 6"),
+            topGlyph.leadingAnchor.constraint(equalTo: topLabel.trailingAnchor, constant: 6)
+                .identifiedBy("topGlyph.leadingAnchor = topLabel.trailingAnchor + 6"),
             topGlyph.topAnchor.constraint(equalTo: topLabel.topAnchor)
                 .identifiedBy("topGlyph.topAnchor = topLabel.topAnchor"),
-            topGlyph.trailingAnchor.constraint(equalTo: stepper.trailingAnchor)
+            topGlyph.widthAnchor.constraint(equalToConstant: 26)
+                .identifiedBy("topGlyph.widthAnchor = 26"),
+            topGlyph.heightAnchor.constraint(equalTo: topGlyph.widthAnchor)
+                .identifiedBy("topGlyph.heightAnchor = topGlyph.widthAnchor")
             ])
         
         // Bottom glyph position
         NSLayoutConstraint.activate([
-            bottomGlyph.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 2)
-                .identifiedBy("bottomGlyph.topAnchor = textField.bottomAnchor + 2"),
-            bottomGlyph.leadingAnchor.constraint(equalTo: topLabel.leadingAnchor, constant: 0)
-                .identifiedBy("bottomGlyph.leadingAnchor = topLabel.leadingAnchor")
+            bottomGlyph.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 3)
+                .identifiedBy("bottomGlyph.topAnchor = textField.bottomAnchor + 3"),
+            bottomGlyph.leadingAnchor.constraint(equalTo: textField.leadingAnchor)
+                .identifiedBy("bottomGlyph.leadingAnchor = textField.leadingAnchor"),
+            bottomGlyph.widthAnchor.constraint(equalToConstant: 20)
+                .identifiedBy("bottomGlyph.widthAnchor = 20"),
+            bottomGlyph.heightAnchor.constraint(equalTo: bottomGlyph.widthAnchor)
+                .identifiedBy("bottomGlyph.heightAnchor = bottomGlyph.widthAnchor"),
+            bottomGlyph.bottomAnchor.constraint(equalTo: bottomLabel.bottomAnchor, constant: -4)
+                .identifiedBy("bottomGlyph.bottomAnchor = bottomLabel.bottomAnchor - 4")
             ])
         
         // Stepper position
         NSLayoutConstraint.activate([
-            stepper.topAnchor.constraint(equalTo: topLabel.topAnchor, constant: 0)
+            stepper.topAnchor.constraint(equalTo: topLabel.topAnchor)
                 .identifiedBy("stepper.topAnchor = topLabel.topAnchor"),
-            stepper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -14)
-                .identifiedBy("stepper.trailingAnchor = trailingAnchor - 8"),
-            stepper.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -8)
-                .identifiedBy("bottomAnchor.constraint <= bottomAnchor - 8")
+            stepper.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -4)
+                .identifiedBy("stepper.trailingAnchor = trailingAnchor - 4"),
             ])
     }
-    
 }
 
 // MARK: - FlightInformationCell.Focus

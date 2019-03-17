@@ -21,4 +21,9 @@ extension NSLayoutConstraint {
         return self
     }
     
+    func withPriority(_ priority: Float) -> NSLayoutConstraint {
+        self.priority = UILayoutPriority(priority)
+        return self
+    }
+    
 }

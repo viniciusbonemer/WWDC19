@@ -27,6 +27,16 @@ enum Colors {
     }
     
     public static
+    var black: UIColor {
+        return UIColor(red: 75/225, green: 75/225, blue: 75/225, alpha: 1)
+    }
+    
+    public static
+    var white: UIColor {
+        return .white
+    }
+    
+    public static
     var blue: UIColor {
         return UIColor(red: 68/225, green: 53/225, blue: 217/225, alpha: 1)
     }

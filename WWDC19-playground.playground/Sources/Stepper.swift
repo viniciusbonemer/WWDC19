@@ -17,8 +17,8 @@ class Stepper: UIView {
     var topButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 12, height: 6))
         
-        button.tintColor = Colors.gray
-        button.setImage(Images.arrowUp, for: [])
+        button.tintColor = Colors.blue
+        button.setImage(Images.arrowUp.withRenderingMode(.alwaysTemplate), for: [])
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         button.contentVerticalAlignment = .top
@@ -34,7 +34,7 @@ class Stepper: UIView {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 12, height: 6))
         
         button.tintColor = Colors.blue
-        button.setImage(Images.arrowDown, for: [])
+        button.setImage(Images.arrowDown.withRenderingMode(.alwaysTemplate), for: [])
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         button.contentVerticalAlignment = .bottom
@@ -50,14 +50,15 @@ class Stepper: UIView {
     var label: UILabel = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 11, height: 20))
         
-        label.font = .systemFont(ofSize: 30, weight: .semibold)
-        label.textColor = Colors.blue
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textColor = Colors.darkGray
         label.textAlignment = .center
         label.text = "0"
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
+    
     
     // MARK: - Initialization -
     
@@ -73,7 +74,82 @@ class Stepper: UIView {
         self.init()
     }
     
+    
     // MARK: - Methods -
+    
+    // MARK: Set Up
+    
+    private
+    func setUp() {
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        setUpViewHierarchy()
+        setUpConstraints()
+    }
+    
+    private
+    func setUpViewHierarchy() {
+        addSubview(label)
+        insertSubview(topButton, at: 0)
+        insertSubview(bottomButton, at: 0)
+    }
+    
+    private
+    func setUpConstraints() {
+        
+        // Stepper size constraints
+        NSLayoutConstraint.activate([
+            widthAnchor.constraint(equalToConstant: 50)
+                .identifiedBy("widthAnchor.constraint = 50"),
+            heightAnchor.constraint(equalToConstant: 81)
+                .identifiedBy("heightAnchor = 81")
+            ])
+        
+        // Top button size constraints
+        NSLayoutConstraint.activate([
+            topButton.widthAnchor.constraint(equalTo: topButton.heightAnchor)
+                .identifiedBy("topButton.widthAnchor = topButton.heightAnchor")
+            ])
+        
+        
+        // Bottom button size constraints
+        NSLayoutConstraint.activate([
+            bottomButton.widthAnchor.constraint(equalTo: bottomButton.heightAnchor)
+                .identifiedBy("bottomButton.widthAnchor = bottomButton.heightAnchor")
+            ])
+        
+        // Vertical constraints
+        NSLayoutConstraint.activate([
+            topButton.topAnchor.constraint(equalTo: topAnchor)
+                .identifiedBy("topButton.topAnchor = topAnchor"),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor)
+                .identifiedBy("label.centerYAnchor = centerYAnchor"),
+            bottomButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+                .identifiedBy("bottomButton.topAnchor = bottomAnchor")
+            ])
+        
+        // Horizontal constraints
+        NSLayoutConstraint.activate([
+            
+            // Equal widths
+            topButton.widthAnchor.constraint(equalTo: widthAnchor)
+                .identifiedBy("topButton.widthAnchor = Stepper.widthAnchor"),
+            label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
+                .identifiedBy("label.widthAnchor = Stepper.widthAnchor * 0.5"),
+            bottomButton.widthAnchor.constraint(equalTo: widthAnchor)
+                .identifiedBy("bottomButton.widthAnchor = widthAnchor"),
+            
+            // Centered
+            topButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+                .identifiedBy("topButton.centerXAnchor = centerXAnchor"),
+            label.centerXAnchor.constraint(equalTo: centerXAnchor)
+                .identifiedBy("label.centerXAnchor = centerXAnchor"),
+            bottomButton.centerXAnchor.constraint(equalTo: centerXAnchor)
+                .identifiedBy("bottomButton.centerXAnchor = centerXAnchor")
+            ])
+    }
+    
+    // MARK: Actions
     
     @objc private
     func incrementCount() {
@@ -103,73 +179,4 @@ class Stepper: UIView {
         topButton.isEnabled = true
     }
     
-    private
-    func setUp() {
-        translatesAutoresizingMaskIntoConstraints = false
-        
-        setUpViewHierarchy()
-        setUpConstraints()
-    }
-    
-    private
-    func setUpViewHierarchy() {
-        addSubview(label)
-        insertSubview(topButton, at: 0)
-        insertSubview(bottomButton, at: 0)
-    }
-    
-    private
-    func setUpConstraints() {
-        
-        // Stepper size constraints
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 50)
-                .identifiedBy("Stepper-width"),
-            heightAnchor.constraint(equalToConstant: 93)
-                .identifiedBy("Stepper-height")
-            ])
-        
-        // Top button size constraints
-        NSLayoutConstraint.activate([
-            topButton.widthAnchor.constraint(equalTo: topButton.heightAnchor)
-                .identifiedBy("topButton.widthAnchor = topButton.heightAnchor")
-            ])
-        
-        
-        // Bottom button size constraints
-        NSLayoutConstraint.activate([
-            bottomButton.widthAnchor.constraint(equalTo: bottomButton.heightAnchor)
-                .identifiedBy("bottomButton.widthAnchor = bottomButton.heightAnchor")
-            ])
-        
-        // Vertical constraints
-        NSLayoutConstraint.activate([
-            topButton.topAnchor.constraint(equalTo: topAnchor)
-                .identifiedBy("topButton.topAnchor = Stepper.topAnchor"),
-            label.centerYAnchor.constraint(equalTo: centerYAnchor)
-                .identifiedBy("label.centerYAnchor = centerYAnchor"),
-            bottomButton.bottomAnchor.constraint(equalTo: bottomAnchor)
-                .identifiedBy("bottomButton.topAnchor = Stepper.bottomAnchor")
-            ])
-        
-        // Horizontal constraints
-        NSLayoutConstraint.activate([
-            
-            // Equal widths
-            topButton.widthAnchor.constraint(equalTo: widthAnchor)
-                .identifiedBy("topButton.widthAnchor = Stepper.widthAnchor"),
-            label.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.5)
-                .identifiedBy("label.widthAnchor = Stepper.widthAnchor / 2"),
-            bottomButton.widthAnchor.constraint(equalTo: widthAnchor)
-                .identifiedBy("bottomButton.widthAnchor = widthAnchor"),
-            
-            // Centered
-            topButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-                .identifiedBy("topButton.centerXAnchor = centerXAnchor"),
-            label.centerXAnchor.constraint(equalTo: centerXAnchor)
-                .identifiedBy("label.centerXAnchor = centerXAnchor"),
-            bottomButton.centerXAnchor.constraint(equalTo: centerXAnchor)
-                .identifiedBy("bottomButton.centerXAnchor = centerXAnchor")
-            ])
-    }
 }

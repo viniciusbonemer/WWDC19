@@ -12,7 +12,12 @@
 		FB0F7566223D1D410053350C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0F7564223D1D410053350C /* Main.storyboard */; };
 		FB0F7568223D1D430053350C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0F7567223D1D430053350C /* Assets.xcassets */; };
 		FB0F756B223D1D430053350C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FB0F7569223D1D430053350C /* LaunchScreen.storyboard */; };
+		FB4C1FFB223D960900A9C28A /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C1FFA223D960900A9C28A /* UIStackView.swift */; };
+		FB4C1FFD223D968D00A9C28A /* FlightInformationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB4C1FFC223D968D00A9C28A /* FlightInformationCard.swift */; };
+		FB51798C223DC5C200EFE866 /* RoudedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB51798B223DC5C100EFE866 /* RoudedButton.swift */; };
 		FB66287A223D20F0009ABF30 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB662879223D20F0009ABF30 /* Colors.swift */; };
+		FBD0B487223DA3F000FF3B5D /* SegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0B486223DA3F000FF3B5D /* SegmentedControl.swift */; };
+		FBD0B489223DA6CE00FF3B5D /* ExclusiveButtonGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD0B488223DA6CE00FF3B5D /* ExclusiveButtonGroup.swift */; };
 		FBEA7676223D247C005F8BE7 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7675223D247C005F8BE7 /* Images.swift */; };
 		FBEA7678223D2602005F8BE7 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */; };
 		FBEA767A223D2669005F8BE7 /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBEA7679223D2669005F8BE7 /* Stepper.swift */; };
@@ -29,7 +34,12 @@
 		FB0F756A223D1D430053350C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB0F756C223D1D430053350C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FB0F7572223D1DB70053350C /* WWDC19-playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "WWDC19-playground.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		FB4C1FFA223D960900A9C28A /* UIStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIStackView.swift; path = "WWDC19-playground.playground/Sources/UIStackView.swift"; sourceTree = SOURCE_ROOT; };
+		FB4C1FFC223D968D00A9C28A /* FlightInformationCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FlightInformationCard.swift; path = "WWDC19-playground.playground/Sources/FlightInformationCard.swift"; sourceTree = SOURCE_ROOT; };
+		FB51798B223DC5C100EFE866 /* RoudedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoudedButton.swift; path = "WWDC19-playground.playground/Sources/RoudedButton.swift"; sourceTree = SOURCE_ROOT; };
 		FB662879223D20F0009ABF30 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = "WWDC19-playground.playground/Sources/Colors.swift"; sourceTree = SOURCE_ROOT; };
+		FBD0B486223DA3F000FF3B5D /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SegmentedControl.swift; path = "WWDC19-playground.playground/Sources/SegmentedControl.swift"; sourceTree = SOURCE_ROOT; };
+		FBD0B488223DA6CE00FF3B5D /* ExclusiveButtonGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExclusiveButtonGroup.swift; path = "WWDC19-playground.playground/Sources/ExclusiveButtonGroup.swift"; sourceTree = SOURCE_ROOT; };
 		FBEA7675223D247C005F8BE7 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = "WWDC19-playground.playground/Sources/Images.swift"; sourceTree = SOURCE_ROOT; };
 		FBEA7677223D2602005F8BE7 /* NSLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSLayoutConstraint.swift; path = "WWDC19-playground.playground/Sources/NSLayoutConstraint.swift"; sourceTree = SOURCE_ROOT; };
 		FBEA7679223D2669005F8BE7 /* Stepper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stepper.swift; path = "WWDC19-playground.playground/Sources/Stepper.swift"; sourceTree = SOURCE_ROOT; };
@@ -82,6 +92,11 @@
 		FB0F7573223D201F0053350C /* PlaygroundSources */ = {
 			isa = PBXGroup;
 			children = (
+				FB51798B223DC5C100EFE866 /* RoudedButton.swift */,
+				FBD0B488223DA6CE00FF3B5D /* ExclusiveButtonGroup.swift */,
+				FBD0B486223DA3F000FF3B5D /* SegmentedControl.swift */,
+				FB4C1FFC223D968D00A9C28A /* FlightInformationCard.swift */,
+				FB4C1FFA223D960900A9C28A /* UIStackView.swift */,
 				FBEA767D223D2742005F8BE7 /* Glyph.swift */,
 				FBEA767B223D2709005F8BE7 /* FlightInformationCell.swift */,
 				FBEA7679223D2669005F8BE7 /* Stepper.swift */,
@@ -164,12 +179,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				FB0F7563223D1D410053350C /* ViewController.swift in Sources */,
+				FB4C1FFB223D960900A9C28A /* UIStackView.swift in Sources */,
+				FBD0B489223DA6CE00FF3B5D /* ExclusiveButtonGroup.swift in Sources */,
+				FBD0B487223DA3F000FF3B5D /* SegmentedControl.swift in Sources */,
+				FB4C1FFD223D968D00A9C28A /* FlightInformationCard.swift in Sources */,
 				FBEA767A223D2669005F8BE7 /* Stepper.swift in Sources */,
 				FBEA767E223D2742005F8BE7 /* Glyph.swift in Sources */,
 				FBEA7676223D247C005F8BE7 /* Images.swift in Sources */,
 				FB66287A223D20F0009ABF30 /* Colors.swift in Sources */,
 				FB0F7561223D1D410053350C /* AppDelegate.swift in Sources */,
 				FBEA7678223D2602005F8BE7 /* NSLayoutConstraint.swift in Sources */,
+				FB51798C223DC5C200EFE866 /* RoudedButton.swift in Sources */,
 				FBEA767C223D2709005F8BE7 /* FlightInformationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

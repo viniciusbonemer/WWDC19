@@ -127,7 +127,7 @@ class FlightInformationCard: UIView {
     
     public
     var seatTypeButtonGroup: ExclusiveButtonGroup = {
-        let buttonGroup = ExclusiveButtonGroup(titles: "Economy", "Business", "First Class")
+        let buttonGroup = ExclusiveButtonGroup(titles: ["Economy", "Business", "First Class"])
         
         buttonGroup.translatesAutoresizingMaskIntoConstraints = false
         
@@ -331,7 +331,7 @@ class FlightInformationCard: UIView {
     
     @objc private
     func buttonHighlight(sender: UIButton) {
-        sender.backgroundColor = Colors.pink
+        sender.backgroundColor = Colors.purple.withAlphaComponent(0.6)
     }
     
     @objc private

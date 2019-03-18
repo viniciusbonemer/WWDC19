@@ -9,7 +9,7 @@
 import UIKit
 
 public
-class ExclusiveButtonGroup: UIView {
+class ExclusiveButtonGroup: UIControl {
     
     // MARK: - Properties -
     
@@ -29,11 +29,23 @@ class ExclusiveButtonGroup: UIView {
         return stack
     }()
     
+    public var selectedIndex: Int = 0
+    
+    public
+    var contentInsets: NSDirectionalEdgeInsets = .zero {
+        didSet {
+            updateMainConstraints()
+        }
+    }
+    
+    private
+    var mainConstraints = [NSLayoutConstraint]()
+    
     
     // MARK: - Initialization -
     
     public
-    init(titles: String...) {
+    init(titles: [String]) {
         super.init(frame: CGRect(x: 0, y: 0, width: 343, height: 48))
         
         setUp(with: titles)
@@ -72,16 +84,7 @@ class ExclusiveButtonGroup: UIView {
     private
     func setUpConstraints() {
         // Size constraints
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
-                .identifiedBy("stackView.topAnchor = safeAreaLayoutGuide.topAnchor"),
-            stackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor)
-                .identifiedBy("stackView.leadingAnchor = safeAreaLayoutGuide.leadingAnchor"),
-            stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
-                .identifiedBy("stackView.trailingAnchor = safeAreaLayoutGuide.trailingAnchor"),
-            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-                .identifiedBy("stackView.bottomAnchor = safeAreaLayoutGuide.bottomAnchor")
-            ])
+        updateMainConstraints()
         
         // Buttons constraints
         stackView.arrangedSubviews.forEach({ view in
@@ -89,7 +92,37 @@ class ExclusiveButtonGroup: UIView {
                 .identifiedBy("buttonHeightAnchor = safeAreaLayoutGuide.heightAnchor")
                 .isActive = true
         })
+    }
+    
+    private
+    func updateMainConstraints() {
+        NSLayoutConstraint.deactivate(mainConstraints)
+        mainConstraints.removeAll(keepingCapacity: true)
+        mainConstraints = [
+            stackView.topAnchor.constraint(
+                equalTo: topAnchor, constant: contentInsets.top
+                ).identifiedBy("stackView.topAnchor = safeAreaLayoutGuide.topAnchor"),
+            stackView.leadingAnchor.constraint(
+                equalTo: leadingAnchor, constant: contentInsets.leading
+                ).identifiedBy("stackView.leadingAnchor = safeAreaLayoutGuide.leadingAnchor"),
+            stackView.trailingAnchor.constraint(
+                equalTo: trailingAnchor, constant: -contentInsets.trailing
+                ).identifiedBy("stackView.trailingAnchor = safeAreaLayoutGuide.trailingAnchor"),
+            stackView.bottomAnchor.constraint(
+                equalTo: bottomAnchor, constant: -contentInsets.bottom
+                ).identifiedBy("stackView.bottomAnchor = safeAreaLayoutGuide.bottomAnchor")
+        ]
         
+        guard subviews.contains(stackView) else { return }
+        
+        NSLayoutConstraint.activate(mainConstraints)
+    }
+    
+    public override
+    func updateConstraints() {
+        updateMainConstraints()
+
+        super.updateConstraints()
     }
     
     private
@@ -102,8 +135,13 @@ class ExclusiveButtonGroup: UIView {
         button.backgroundColor = Colors.lightGray
         button.setTitleColor(Colors.darkGray, for: .normal)
         button.setTitleColor(Colors.white, for: .selected)
-        
-        button.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+        button.setTitleColor(Colors.lightGray, for: .highlighted)
+        button.addTarget(self, action: #selector(buttonTapped(sender:)),
+                         for: [.touchUpInside])
+        button.addTarget(self, action: #selector(buttonReleased(sender:)),
+                         for: [.touchDragExit, .touchCancel])
+        button.addTarget(self, action: #selector(buttonHighlight(sender:)),
+                         for: [.touchDown, .touchDragEnter])
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -115,17 +153,44 @@ class ExclusiveButtonGroup: UIView {
         layer.cornerRadius = frame.height / 2
     }
     
+    public
+    func setButton(_ button: UIButton, apearenceForState state: State) {
+        
+        switch state {
+        case .selected:
+            button.backgroundColor = Colors.purple
+            button.isSelected = true
+        case .highlighted:
+            button.backgroundColor = button.backgroundColor?.withAlphaComponent(0.4)
+        default:
+            button.backgroundColor = Colors.lightGray
+            button.isSelected = false
+        }
+        
+    }
+    
     // MARK: Actions
     
     @objc private
     func buttonTapped(sender: UIButton) {
         
         for case let button in buttons where button !== sender {
-            button.backgroundColor = Colors.lightGray
-            button.isSelected = false
+            setButton(button, apearenceForState: .normal)
         }
         
-        sender.backgroundColor = Colors.purple
-        sender.isSelected = true
+        setButton(sender, apearenceForState: .selected)
+        
+        selectedIndex = buttons.firstIndex(of: sender)!
+        sendActions(for: .valueChanged)
+    }
+    
+    @objc private
+    func buttonHighlight(sender: UIButton) {
+        setButton(sender, apearenceForState: .highlighted)
+    }
+    
+    @objc private
+    func buttonReleased(sender: UIButton) {
+        setButton(sender, apearenceForState: sender.isSelected ? .selected : .normal)
     }
 }

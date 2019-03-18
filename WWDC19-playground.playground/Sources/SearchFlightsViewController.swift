@@ -33,6 +33,15 @@ class SearchFlightsViewController: UIViewController {
     }()
     
     private
+    var segmentedControl: SegmentedControl = {
+        let control = SegmentedControl(titles: ["Round Trip", "One Way"])
+
+        control.translatesAutoresizingMaskIntoConstraints = false
+
+        return control
+    }()
+    
+    private
     var cardView: FlightInformationCard = {
         let card = FlightInformationCard()
         
@@ -71,8 +80,40 @@ class SearchFlightsViewController: UIViewController {
         setUpViewHierarchy()
         setUpConstraints()
         
+        segmentedControl.addTarget(self, action: #selector(valueChanged(for:)), for: .valueChanged)
         view.backgroundColor = Colors.white
         gradientView.startAnimation()
+    }
+    
+    @objc private
+    func valueChanged(for segmentedControl: SegmentedControl) {
+        let index = segmentedControl.selectedIndex
+        let flightType = SearchFlightsViewController.TicketType.init(rawValue: index)!
+        
+        let targetAlpha: CGFloat
+        let middleText: String
+        let bottomText: String
+        let isInteractive: Bool
+        
+        switch flightType {
+        case .oneWay:
+            targetAlpha = 0.2
+            middleText = "DATE"
+            bottomText = ""
+            isInteractive = false
+        case .roundTrip:
+            targetAlpha = 1
+            middleText = "8 JUN"
+            bottomText = "Saturday 2019"
+            isInteractive = true
+        }
+        
+        UIView.animate(withDuration: 0.4) {
+            self.cardView.returnCell.alpha = targetAlpha
+            self.cardView.returnCell.textField.text = middleText
+            self.cardView.returnCell.bottomLabel.text = bottomText
+            self.cardView.returnCell.isUserInteractionEnabled = isInteractive
+        }
     }
     
     private
@@ -80,21 +121,12 @@ class SearchFlightsViewController: UIViewController {
         view.addSubview(gradientView)
         view.addSubview(cardView)
         view.addSubview(mapView)
+        view.addSubview(segmentedControl)
         view.addSubview(titleLabel)
     }
     
     private
     func setUpConstraints() {
-        
-        // Card View Constraints
-        NSLayoutConstraint.activate([
-            cardView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-                .identifiedBy("cardView.centerXAnchor = view.centerXAnchor"),
-            cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 174)
-                .identifiedBy("cardView.topAnchor = view.topAnchor + 174"),
-//            cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15)
-//                .identifiedBy("cardView.bottomAnchor = view.bottomAnchor - 15")
-            ])
         
         NSLayoutConstraint.activate([
             gradientView.topAnchor.constraint(equalTo: view.topAnchor)
@@ -120,8 +152,25 @@ class SearchFlightsViewController: UIViewController {
             titleLabel.widthAnchor.constraint(equalTo: cardView.widthAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 28)
             ])
+        
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 22),
+            segmentedControl.widthAnchor.constraint(equalTo: cardView.widthAnchor),
+            segmentedControl.centerXAnchor.constraint(equalTo: cardView.centerXAnchor),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 48)
+            ])
+        
+        // Card View Constraints
+        NSLayoutConstraint.activate([
+            cardView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+                .identifiedBy("cardView.centerXAnchor = view.centerXAnchor"),
+            cardView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 24)
+//            cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 174)
+//                .identifiedBy("cardView.topAnchor = view.topAnchor + 174"),
+            //            cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -15)
+            //                .identifiedBy("cardView.bottomAnchor = view.bottomAnchor - 15")
+            ])
     }
-    
     
     public override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -129,4 +178,12 @@ class SearchFlightsViewController: UIViewController {
         titleLabel.sizeToFit()
     }
     
+}
+
+extension SearchFlightsViewController {
+    public
+    enum TicketType: Int, CaseIterable {
+        case roundTrip
+        case oneWay
+    }
 }
